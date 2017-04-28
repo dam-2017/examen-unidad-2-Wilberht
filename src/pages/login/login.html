@@ -1,0 +1,38 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="myForm">
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Usuario</ion-label>
+        <ion-input type="text" formControlName="usuario"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="banUsuario">
+        <p color="primary">No debe estar vacio el campo</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Constraseña</ion-label>
+        <ion-input type="text" formControlName="contraseña"></ion-input>
+      </ion-item>
+
+
+      <ion-item *ngIf="bandContra ">
+        <p *ngIf="myForm.get('contraseña').hasError('required')" color="primary">No debe estar vacio el campo</p>
+        <p *ngIf="!myForm.get('contraseña').hasError('required')" color="primary">Error en la contraseña</p>
+      </ion-item>
+
+      <ion-item>
+        <button ion-button full (click)="validar()">Validar</button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>
